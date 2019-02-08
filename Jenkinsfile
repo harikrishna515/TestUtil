@@ -1,6 +1,6 @@
 node('master'){
 checkout scm;
-def url =readProperties file: 'PropertiesFile.properties'
+def url =readFile "https://github.com/harikrishna515/Util.git/PropertiesFile.properties"
 stage('checkout') { 
 	echo "${url}"
 	def Var1= url.GIT_URL
