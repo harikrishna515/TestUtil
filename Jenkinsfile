@@ -1,4 +1,5 @@
 node('master'){
+checkout scm;
 def url =readProperties file: 'PropertiesFile.properties'
 stage('checkout') { 
 	echo "${url}"
