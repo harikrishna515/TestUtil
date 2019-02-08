@@ -1,6 +1,13 @@
-node('master'){
+pipeline{
+	agent any
+	stages{
 stage('checkout') { 
-	def xxx = readFile 'PropertiesFile.properties'
+	steps{
+		script{
+	def xxx = readProperties file: 'PropertiesFile.properties'
 	echo xxx.username;
+	}
+	}
 }
+	}
 }
