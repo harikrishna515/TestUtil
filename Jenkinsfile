@@ -1,10 +1,14 @@
-node('master'){
+pipeline{
+	agent any
+	stages{
 checkout scm;
-def url =readFile "PropertiesFile.properties"
+def url =readProperties file: 'PropertiesFile.properties'
 stage('checkout') { 
-	echo "${url.AppRepURL}"
-	def Var1= url.AppRepURL
+	echo "${url}"
+	def Var1= url.GIT_URL
+	echo "After variable def"
 	echo "Var1=${Var1}"
+	echo "===================="
 	git "${Var1}"
 }
 stage('Build & Compile') {    
@@ -15,7 +19,7 @@ sh 'mvn sonar:sonar'
 }
 stage ('Artifactory Deploy'){
 script {
-def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username: 'admin', password: 'password'
+def server = Artifactory.newServer url: url.ARTIFACTORY_ID, username: url.username, password: url.password
 def uploadSpec = """{
   "files": [
     {
@@ -29,7 +33,8 @@ server.upload(uploadSpec)
 }
 stage ('Deploy')
 {
-	sh 'sudo cp target/*.war ' + url.DeploymentPath
-	sh 'sudo ls -ltr ' + url.DeploymentPath
+	sh 'sudo cp target/*.war url.DeploymentPath'
+	sh 'sudo ls -ltr url.DeploymentPath'
+}
 }
 }
