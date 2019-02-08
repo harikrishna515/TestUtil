@@ -25,7 +25,6 @@ pipeline{
 		stage ('Artifactory Deploy'){		
 	steps{
 	script {
-		echo "${Artifactoryurl.ARTIFACTORY_ID}"
 		def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username: 'admin', password: 'password'
 		def uploadSpec = """{
 		  "files": [
