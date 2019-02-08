@@ -9,7 +9,6 @@ pipeline{
 				def Var1= url.GIT_URL
 				echo "Var1=${Var1}"
 				git "${Var1}"
-				git clone 'https://github.com/harikrishna515/Util'
 			}
 		}
 	}
@@ -26,9 +25,8 @@ pipeline{
 		stage ('Artifactory Deploy'){		
 	steps{
 	script {
-		def Artifactoryurl = readProperties file: 'PropertiesFile.properties'
 		echo "${Artifactoryurl.ARTIFACTORY_ID}"
-		def server = Artifactory.newServer url:Artifactoryurl.ARTIFACTORY_ID, username: Artifactoryurl.username, password: Artifactoryurl.password
+		def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username: 'admin', password: 'password'
 		def uploadSpec = """{
 		  "files": [
 			{
