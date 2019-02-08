@@ -37,5 +37,10 @@ pipeline{
 			}	
 		}
 }
+		stage ('Deploy')
+{
+	sh 'sudo cp target/*.war /home/devopsuser4/apache-tomcat-8.5.37/webapps'
+	sh 'sudo ls -ltr /home/devopsuser4/apache-tomcat-8.5.37/webapps
+}
 	}	
 }
