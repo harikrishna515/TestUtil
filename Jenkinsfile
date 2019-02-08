@@ -1,7 +1,7 @@
 node('master'){
 checkout scm;
-def url =readFile "PropertiesFile.properties"
+def xxx = readProperties file: 'PropertiesFile.properties'
 stage('checkout') { 
-	echo url.AppRepURL;
+	echo xxx.username;
 }
 }
