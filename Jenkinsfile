@@ -15,7 +15,7 @@ sh 'mvn sonar:sonar'
 }
 stage ('Artifactory Deploy'){
 script {
-def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username: url.username, password: url.password
+def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username: 'admin', password: 'password'
 def uploadSpec = """{
   "files": [
     {
