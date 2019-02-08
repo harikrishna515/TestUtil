@@ -4,7 +4,7 @@ node {
        stage('checkout') { 
                     echo "${url}"
                     def Var1= url.GIT_URL
-                    echo "Var1=${Var1}"
+                    //echo "Var1=${Var1}"
                     git "${Var1}"
                 }
         stage('Build') {
