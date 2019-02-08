@@ -3,9 +3,9 @@ checkout scm;
 def url =readFile "PropertiesFile.properties"
 stage('checkout') { 
 	echo "${url}"
-	def Var1= url.GIT_URL
-	echo "Var1=${Var1}"
-	git "${Var1}"
+	//def Var1= url.GIT_URL
+	//echo "Var1=${Var1}"
+	git url.GIT_URL
 }
 stage('Build & Compile') {    
 	sh 'mvn clean package'
