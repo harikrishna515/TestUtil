@@ -22,5 +22,20 @@ pipeline{
 		sh 'mvn sonar:sonar'
 		}
 	}
+		stage ('Artifactory Deploy'){
+	steps{
+	script {
+		def server = Artifactory.newServer url:url.ARTIFACTORY_ID, username: url.username, password: url.password
+		def uploadSpec = """{
+		  "files": [
+			{
+			  "pattern": "*.war",
+			  "target": "lib-staging"
+			}
+		 ]
+		}"""
+			}	
+		}
+}
 	}	
 }
