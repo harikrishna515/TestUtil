@@ -1,11 +1,11 @@
 pipeline{
 	agent any
 	stages{
+		def url = readProperties file: 'PropertiesFile.properties'
 		stage('checkout') { 
 		steps{
-			script{
-				def url = readProperties file: 'PropertiesFile.properties'
-				echo "${url.GIT_URL}"
+			script{				
+			echo "${url.GIT_URL}"
 				def Var1= url.GIT_URL
 				echo "Var1=${Var1}"
 				git "${Var1}"
