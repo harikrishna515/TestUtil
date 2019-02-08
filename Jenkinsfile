@@ -1,10 +1,10 @@
 pipeline{
 	agent any
 	stages{
-		stage('checkout') { 
-			def url = readProperties file: 'PropertiesFile.properties'
+		stage('checkout') { 			
 		steps{
-			script{				
+			script{	
+				def url = readProperties file: 'PropertiesFile.properties'
 			echo "${url.GIT_URL}"
 				def Var1= url.GIT_URL
 				echo "Var1=${Var1}"
@@ -25,7 +25,8 @@ pipeline{
 		stage ('Artifactory Deploy'){		
 	steps{
 	script {
-		def server = Artifactory.newServer url:url.ARTIFACTORY_ID, username: url.username, password: url.password
+		def Artifactoryurl = readProperties file: 'PropertiesFile.properties'
+		def server = Artifactory.newServer url:Artifactoryurl.ARTIFACTORY_ID, username: Artifactoryurl.username, password: Artifactoryurl.password
 		def uploadSpec = """{
 		  "files": [
 			{
