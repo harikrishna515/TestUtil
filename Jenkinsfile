@@ -4,11 +4,9 @@ pipeline{
 checkout scm;
 def url =readProperties file: 'PropertiesFile.properties'
 stage('checkout') { 
-	echo "${url}"
+	echo "${url.GIT_URL}"
 	def Var1= url.GIT_URL
-	echo "After variable def"
 	echo "Var1=${Var1}"
-	echo "===================="
 	git "${Var1}"
 }
 stage('Build & Compile') {    
