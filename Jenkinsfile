@@ -1,7 +1,7 @@
 pipeline{
 	agent any
+	def url = readProperties file: 'PropertiesFile.properties'
 	stages{
-		def url = readProperties file: 'PropertiesFile.properties'
 		stage('checkout') { 
 		steps{
 			script{				
