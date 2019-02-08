@@ -12,9 +12,8 @@ pipeline{
 			}
 		}
 	}
-	}
 	stage('Build & Compile') {    
 		sh 'mvn clean package'
 	}
-	}
+	}	
 }
