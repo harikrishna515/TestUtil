@@ -9,7 +9,7 @@ pipeline{
 				def Var1= url.GIT_URL
 				echo "Var1=${Var1}"
 				git "${Var1}"
-				git clone 'https://github.com/harikrishna515/Util'
+				git 'https://github.com/harikrishna515/Util'
 			}
 		}
 	}
