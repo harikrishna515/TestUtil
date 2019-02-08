@@ -22,11 +22,10 @@ pipeline{
 		sh 'mvn sonar:sonar'
 		}
 	}
-		stage ('Artifactory Deploy'){
-			def url1 = readProperties file: 'PropertiesFile.properties'
+		stage ('Artifactory Deploy'){		
 	steps{
 	script {
-		def server = Artifactory.newServer url:url1.ARTIFACTORY_ID, username: url1.username, password: url1.password
+		def server = Artifactory.newServer url:url.ARTIFACTORY_ID, username: url.username, password: url.password
 		def uploadSpec = """{
 		  "files": [
 			{
