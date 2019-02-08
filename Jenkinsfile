@@ -4,7 +4,7 @@ pipeline{
 stage('checkout') { 
 	steps{
 		script{
-	def xxx = readProperties file: 'PropertiesFile.properties'
+	def xxx = readFile 'PropertiesFile.properties'
 	echo xxx.username;
 	}
 	}
