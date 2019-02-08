@@ -1,7 +1,6 @@
 node('master'){
-checkout scm;
-def xxx = readProperties file: 'PropertiesFile.properties'
 stage('checkout') { 
+	def xxx = readProperties file: 'PropertiesFile.properties'
 	echo xxx.username;
 }
 }
