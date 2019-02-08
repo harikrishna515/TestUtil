@@ -26,6 +26,7 @@ pipeline{
 	steps{
 	script {
 		def Artifactoryurl = readProperties file: 'PropertiesFile.properties'
+		echo "${Artifactoryurl.ARTIFACTORY_ID}"
 		def server = Artifactory.newServer url:Artifactoryurl.ARTIFACTORY_ID, username: Artifactoryurl.username, password: Artifactoryurl.password
 		def uploadSpec = """{
 		  "files": [
