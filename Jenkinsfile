@@ -4,7 +4,8 @@ pipeline{
 		stage('checkout') { 			
 		steps{
 			script{	
-				sh 'mkdir properties;cd properties'
+				//sh 'rm -rf properties'
+				//sh 'mkdir properties;cd properties'
 				git 'https://github.com/harikrishna515/TestUtil'
 				def url = readProperties file: 'PropertiesFile.properties'
 				echo "${url.GIT_URL}"
