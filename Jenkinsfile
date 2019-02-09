@@ -32,7 +32,7 @@ pipeline{
 	script {
 		sh 'cd properties'
 		def url = readProperties file: 'PropertiesFile.properties'
-		def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username: url.username , password: url.password
+		def server = Artifactory.newServer url:url.Artifactory_ID, username: url.username , password: url.password
 		def uploadSpec = """{
 		  "files": [
 			{
