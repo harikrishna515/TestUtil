@@ -12,6 +12,7 @@ pipeline{
 				
 		}
 	}
+	}
 	stage('Build & Compile') { 
 		steps{
 		sh 'mvn clean package'
@@ -44,5 +45,6 @@ steps{
 	sh 'sudo ls -ltr /home/devopsuser4/apache-tomcat-8.5.37/webapps'
 	}
 }	
-	}	
+
+}
 }
