@@ -4,17 +4,10 @@ pipeline{
 		stage('checkout') { 			
 		steps{
 			script{	
-				sh 'rm -rf properties'
-				sh 'mkdir properties'
-				sh 'cd properties'
-				sh 'pwd'
-				git 'https://github.com/harikrishna515/TestUtil'
 				def url = readProperties file: 'PropertiesFile.properties'
 				echo "${url.GIT_URL}"
 				def Var1= url.GIT_URL
 				echo "Var1=${Var1}"
-				sh 'cd ..'
-				sh 'pwd'
 				git "${Var1}"
 				
 		}
@@ -33,10 +26,7 @@ pipeline{
 		stage ('Artifactory Deploy'){		
 	steps{
 	script {
-		sh 'cd properties'
-		sh 'pwd'
-		def url = readProperties file: 'properties/PropertiesFile.properties'
-		def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: url.username , password: url.password
+		def server = Artifactory.newServer url:'http://localhost:8081/artifactory', username: 'admin', password: 'password'
 		def uploadSpec = """{
 		  "files": [
 			{
