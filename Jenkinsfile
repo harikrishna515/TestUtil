@@ -1,5 +1,4 @@
 node('master') {
-  notify('Project Build Started')
 	stage('git checkout') {
 		checkout scm;
 		   checkout scm;
