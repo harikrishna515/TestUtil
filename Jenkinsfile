@@ -4,8 +4,11 @@ node('master') {
 
               try{
                              stage('git checkout') {
-                                           git 'https://github.com/harikrishna515/DevOps-301Training.git'
-                                           sh 'mkdir properties'
+                                    def url = readProperties file: 'PropertiesFile.properties'
+                                    echo "${url.GIT_URL}"
+                                    def Var1= url.GIT_URL
+                                    echo "Var1=${Var1}"
+                                    git "${Var1}"
                              }    
     
                                            stage('Code Analysis' ) {
