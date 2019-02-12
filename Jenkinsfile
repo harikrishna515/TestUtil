@@ -4,6 +4,9 @@ node('master') {
 
               try{
                              stage('git checkout') {
+                                        checkout scm;
+                                            def url =readProperties file: 'properties_file.properties'
+                                            echo "${url.username}"
                                            git 'https://github.com/harikrishna515/DevOps-301Training.git'
                              }    
     
