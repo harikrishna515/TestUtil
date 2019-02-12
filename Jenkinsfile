@@ -20,7 +20,7 @@ pipeline{
 	}
 		stage ('SonarQube Analysis'){
 	steps{
-		sh 'mvn sonar:sonar'
+		sh 'mvn sonar1:sonar'
 		}
 	}
 		stage ('Artifactory Deploy'){		
