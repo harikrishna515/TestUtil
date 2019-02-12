@@ -8,6 +8,7 @@ node('master') {
 					sh 'mkdir properties'
 					sh 'cd properties'
 					sh 'pwd'
+				     	sh 'cd ..'
                                         checkout scm;
                                             def url =readProperties file: 'PropertiesFile.properties'
                                            echo "${url.GIT_URL}"
