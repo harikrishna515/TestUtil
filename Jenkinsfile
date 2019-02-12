@@ -6,9 +6,11 @@ node('master') {
                              stage('git checkout') {
                                         checkout scm;
                                             def url =readProperties file: 'properties_file.properties'
-                                            echo "${url.username}"
-                                           git 'https://github.com/harikrishna515/DevOps-301Training.git'
-                             }    
+                                           echo "${url}"
+                                            def Var1= url.GIT_URL
+                                            echo "Var1=${Var1}"
+                                            git "${Var1}"
+                                        }    
     
                                            stage('Code Analysis' ) {
                                                           sh 'mvn sonar:sonar'
