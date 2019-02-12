@@ -33,8 +33,8 @@ node('master') {
                                            }
 
                                            stage('Deployment'){
-              sh 'sudo cp target/*.war /home/devopsuser4/Tomcat/apache-tomcat-8.5.37/webapps'
-              sh 'sudo ls -ltr /home/devopsuser4/Tomcat/apache-tomcat-8.5.37/webapps'
+                             sh 'sudo cp target/*.war /home/devopsuser4/apache-tomcat-8.5.37/webapps'
+	                        sh 'sudo ls -ltr /home/devopsuser4/apache-tomcat-8.5.37/webapps'
                                            }
                                            
                                            stage('Email Notification'){
