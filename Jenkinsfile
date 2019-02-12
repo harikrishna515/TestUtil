@@ -4,14 +4,8 @@ node('master') {
 
               try{
                              stage('git checkout') {
-                                    checkout scm;
-                                    def url =readFile "PropertiesFile.properties"
-                                    stage('checkout') { 
-                                        echo "${url.GIT_URL}"
-                                        def Var1= url.GIT_URL
-                                        echo "Var1=${Var1}"
-                                        git "${Var1}"
-                                 }    
+                                           git 'https://github.com/harikrishna515/DevOps-301Training.git'
+                             }    
     
                                            stage('Code Analysis' ) {
                                                           sh 'mvn sonar:sonar'
@@ -51,7 +45,7 @@ node('master') {
 }
 def notify(status){
     emailext(
-        to: "Hari.Garbham@mindtree.com",
+        to: "Hari.Garbham@gmail.com",
         subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
         body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' :</p>
         <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
